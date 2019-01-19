@@ -1,0 +1,17 @@
+#donateModal.modal.fade(role='dialog')
+    .modal-dialog.modal-md
+        .modal-content
+            .modal-header
+                button.close(type="button" data-dismiss='modal') &times;
+                h2 Support Coop Friend Finder
+            .modal-body
+                form(method="POST" action="/chargeDonation")
+                    input#csrf(type='hidden', name='_csrf', value=_csrf)
+                    input#stripeToken.form-control(type='hidden' name='stripeToken')
+                    .input-group
+                        span.input-group-addon $
+                        input#donateInput.form-control(type='number' min="0" step="1" name='amount' placeholder="Anything helps!")
+                    br
+                    center
+                        button.stripe-button-el.stripe-pub-key#donateButton(data-key=stripe_pub_key)
+                            span(style="display: block; min-height: 30px;") Donate with Card

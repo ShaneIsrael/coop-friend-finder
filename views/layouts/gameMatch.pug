@@ -1,0 +1,46 @@
+a.list-group-item(gameMatchId=val.gameMatchId)
+    .ribbon-wrapper
+        if val.ratedUp == null
+            .ribbon.ribbon-black.text-uppercase(id="ribbon"+val.gameMatchId) unrated
+        else if val.ratedUp == true
+            .ribbon.ribbon-green.text-uppercase(id="ribbon"+val.gameMatchId)
+                i.fa.fa-thumbs-up
+        else
+            .ribbon.ribbon-red.text-uppercase(id="ribbon"+val.gameMatchId)
+                i.fa.fa-thumbs-down
+    -var timeArray = val.time.split(',')
+    -var time = timeArray[0].concat(', ').concat(timeArray[1]).concat(' at').concat(timeArray[2])
+    -var username = val.op ? val.requesterUsername : val.accepterUsername
+    div(data-toggle="collapse" href="#listCollapse" + val.gameMatchId)
+        div.list-group-item-heading
+            h2 #{val.game}
+        hr
+        .row.listing-details
+            span.badge
+                span You matched up with
+                    strong  #{username}
+                    |  on #{time}
+        include ./platformDisplay.pug
+        img.toggle-arrow.pull-right(src='img/toggle_arrow.svg', data-toggle='tooltip', title='Arrow')
+    div(id="listCollapse" + val.gameMatchId class="collapse")
+        - var ign = val.op ? val.requesterPlatformUsername : val.accepterPlatformUsername
+        br
+        .input-group
+            span.input-group-addon#platformIGN #{val.platform} In-game Name
+            input(aria-describedby="platformIGN" type="text" class="form-control" name="platformIGN" value=ign readonly)
+        if val.voiceServer
+            .input-group
+                span.input-group-addon#voiceServer Voice Server
+                input.voiceServer(aria-describedby="voiceServer" type="text" class="form-control" name="voiceServer" value=val.voiceServer readonly)
+        if val.voiceServerPassword
+            .input-group
+                span.input-group-addon#voiceServerPassword Voice Password
+                input.voiceServerPassword(aria-describedby="voiceServerPassword" type="text" class="form-control" name="voiceServerPassword" value=val.voiceServerPassword readonly)
+        br
+        div.btn-toolbar
+            button.addContact.btn.btn-sm.btn-primary(type="button" value=username) Add Contact
+            button.quickSendMessage.btn.btn-sm.btn-primary(type="button" value=username) Send Message
+            if val.ratedUp != null
+                button.rateMatch.btn.btn-sm.btn-default(type="button" disabled) Already Rated
+            else
+                button.rateMatch.btn.btn-sm.btn-warning(type="button" value=val.gameMatchId) Rate This Match

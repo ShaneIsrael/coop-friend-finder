@@ -1,0 +1,43 @@
+
+@media (min-width:768px) {
+    body {
+        background:url("../img/cff_wallpaper-repeat.jpg");
+        -webkit-animation:300s scroll infinite linear;
+        -moz-animation:300s scroll infinite linear;
+        -o-animation:300s scroll infinite linear;
+        -ms-animation:300s scroll infinite linear;
+        animation:300s scroll infinite linear;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+}
+@-webkit-keyframes scroll{
+    from {background-position: 0 0;}
+    to {background-position: -5760px 0;}
+}
+
+@-moz-keyframes scroll{
+    from {background-position: 0 0;}
+    to {background-position: -5760px 0;}
+}
+
+@-o-keyframes scroll{
+    from {background-position: 0 0;}
+    to {background-position: -5760px 0;}
+}
+
+@-ms-keyframes scroll{
+    from {background-position: 0 0;}
+    to {background-position: -5760px 0;}
+}
+
+@keyframes scroll{
+    from {background-position: 0 0;}
+    to {background-position: -5760px 0;}
+}
+
+.navbar {
+    margin-bottom: 0;
+}

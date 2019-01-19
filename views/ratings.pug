@@ -1,0 +1,55 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/ratings.css', rel='stylesheet', media='screen')
+
+
+    body
+        include layouts/navbar.pug
+
+        div.container
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            if successMessage != ''
+                div.alert.alert-success(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{successMessage}
+            if ratings.length > 0
+                div.list-group
+                    each val in ratings
+                        a.list-group-item
+                            div.list-group-item-heading
+                                span.badge.pull-right=val.timeAlive
+                                h2=val.game
+                            hr
+                            include layouts/platformDisplay.pug
+                            h3 How would you rate your experience playing with
+                                b  #{val.username}?
+                            hr
+                            form(method="POST" action="/rate")
+                                input(type='hidden', name='_csrf', value=_csrf)
+                                label(for="rating") Choose a rating
+                                select(id="ratings" class="form-control" name="rating" required)
+                                    each number in [10,9,8,7,6,5,4,3,2,1,0]
+                                        option(value=number) #{number}
+                                br
+                                button.btn.btn-block.btn-success(name="id" value=val.id type="submit") Submit Rating
+            else
+                div.alert.alert-info
+                    h1.noListings.text-center You don't have any pending ratings.
+
+
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/client.js')
+    script(src='/js/notifications.js')

@@ -1,0 +1,212 @@
+.heading-font {
+  font-family: 'Rubik', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+.body-font {
+  font-family: 'Rubik', 'Helvetica', 'Arial', 'sans-serif';
+}
+.alt-font {
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+html,
+body {
+  font-family: 'Rubik', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+hr {
+  max-width: 100px;
+  margin: 25px auto 0;
+  border-width: 1px;
+  border-color: rgba(34, 34, 34, 0.1);
+}
+hr.light {
+  border-color: white;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Rubik', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+header {
+  position: relative;
+  width: 100%;
+  overflow-y: hidden;
+  /*background: url("../img/bg-pattern.png"), #7b4397;
+  /* fallback for old browsers */
+  /*background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  /* Chrome 10-25, Safari 5.1-6 */
+  /*background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+header .header-content {
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+header .header-content .header-content-inner {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+header .header-content .header-content-inner h1 {
+  margin-top: 0;
+  font-size: 30px;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+  color: #808080;
+}
+header .header-content .header-content-inner .list-badges {
+  margin-bottom: 25px;
+}
+header .header-content .header-content-inner .list-badges img {
+  height: 50px;
+  margin-bottom: 25px;
+}
+header .device-container {
+  max-width: 300px;
+  margin: 0 auto 100px;
+}
+header .device-container .screen img {
+  border-radius: 3px;
+}
+@media (min-width: 768px) {
+  header {
+    min-height: 100%;
+  }
+  header .header-content .header-content-inner {
+    max-width: 600px;
+    margin: 0;
+    /*position: absolute;
+    top: 50%;
+    transform: translateY(-50%);*/
+  }
+  header .header-content .header-content-inner h1 {
+    font-size: 35px;
+  }
+  header .device-container {
+    max-width: none;
+    max-height: calc(0vh);
+    margin: 100px auto 0;
+  }
+}
+@media (min-width: 992px) {
+  header .header-content .header-content-inner h1 {
+    font-size: 38px;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .highlight {
+    display: inline-block;
+    height: auto!important;
+    overflow: visible!important;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .landing-heros .col-sm-5 {
+    height: auto!important;
+    padding: 0;
+    position: relative;
+    width: 52.6%;
+  }
+
+  header .header-content {
+    position: relative!important;
+    text-align: center!important;
+    top: 0!important;
+    transform: none!important;
+  }
+
+
+
+
+  header .header-content .header-content-inner h1 {
+    font-size: 30px !important;
+    margin-bottom: 0 !important;
+    margin-top: 0;
+  }
+
+
+
+  .landing-heros .col-sm-7 {
+    padding: 0;
+    width: 100% !important;
+  }
+
+  .landing-heros .col-sm-5 {
+    padding: 0;
+    width: 100% !important;
+    padding: 50px!important;
+  }
+
+
+
+  header .header-content .header-content-inner {
+    margin: 0;
+    max-width: 630px;
+    position: relative !important;
+    transform: none !important;
+  }
+
+  .hero-image img {
+    display: table;
+    margin: 0 auto !important;
+    position: relative !important;
+    width: 70%;
+  }
+
+
+
+
+
+}
+
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
+::-moz-selection {
+  color: white;
+  text-shadow: none;
+  background: #222222;
+}
+::selection {
+  color: white;
+  text-shadow: none;
+  background: #222222;
+}
+img::selection {
+  color: white;
+  background: transparent;
+}
+img::-moz-selection {
+  color: white;
+  background: transparent;
+}
+body {
+  webkit-tap-highlight-color: #222222;
+}
+
+.hero-image{
+  display: block;
+  vertical-align: middle;
+  right:10%;
+}

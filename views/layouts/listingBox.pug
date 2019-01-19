@@ -1,0 +1,13 @@
+a.list-group-item
+    div.list-group-item-heading
+        span.badge.pull-right=val.timeAlive
+        h2=val.game
+    hr
+    h5
+        | IGN:
+        b= " " + val.platformUsername
+    include ./platformDisplay.pug
+    if val.notes
+        div.well
+            p=val.notes
+    hr

@@ -1,0 +1,271 @@
+.btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+  margin: 5px;
+}
+
+.btn-sq {
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 10px;
+}
+
+.btn-sq-xs {
+  width: 25px !important;
+  height: 25px !important;
+  padding:2px;
+}
+
+.home-btn {
+  width: 100%;
+}
+.requestsBadge {
+  color: red !important;
+  position: relative;
+  top: -12px;
+}
+
+#chatWell {
+  margin-bottom: 0;
+}
+
+#chatWell {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+#chatWell > div {
+  word-wrap: break-word;
+}
+
+@media (min-width: 767px) {
+  #chatWell {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+}
+
+.msgTagged {
+  background-color: #b3e0ff;
+  animation: glowTag .5s 5;
+  -moz-animation: glowTag .5s 5; /* Firefox */
+  -webkit-animation: glowTag .5s 5; /* Safari and Chrome */
+}
+@-moz-keyframes glowTag /* Firefox */
+{
+  0% {background-color: #80ccff;}
+  50% {background-color:#1aa3ff;}
+  100% {background-color:#80ccff;}
+}
+@-webkit-keyframes glowTag
+{
+  0% {background-color: #80ccff;}
+  50% {background-color:#1aa3ff;}
+  100% {background-color:#80ccff;}
+}
+
+/* POPULAR GAME CARDS */
+.populars {
+  margin: auto;
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+.gamecard{
+  background-position: left 0 top 0px, left 0 bottom 20%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  width: calc(100% / 6 - 10px);
+  min-width: 215px;
+  max-width: 215px;
+  text-align: left;
+  font-family: "Rubik", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  max-height: 295px;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+.gamecard-1{
+  background-image: linear-gradient(180deg, rgba(217, 235, 255, 0) 50%, rgba(217, 235, 255, 1) 80%), url("../img/popular-games/halo-5.jpg");
+}
+.gamecard-2{
+  background-image: linear-gradient(180deg, rgba(217, 235, 255, 0) 50%, rgba(217, 235, 255, 1) 80%), url("../img/popular-games/rocket-league.jpg");
+}
+.gamecard-3{
+  background-image: linear-gradient(180deg, rgba(217, 235, 255, 0) 50%, rgba(217, 235, 255, 1) 80%), url("../img/popular-games/destiny.jpg");
+}
+.gamecard-4{
+  background-image: linear-gradient(180deg, rgba(217, 235, 255, 0) 50%, rgba(217, 235, 255, 1) 80%), url("../img/popular-games/overwatch.jpg");
+}
+.gamecard-5{
+  background-image: linear-gradient(180deg, rgba(217, 235, 255, 0) 50%, rgba(217, 235, 255, 1) 80%), url("../img/popular-games/battlefield-1.jpg");
+}
+
+.gamecard:last-child{
+  margin-right: 0!important;
+}
+
+.gamecard-inner {
+  align-items: end;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  min-height: 265px;
+  max-height: 265px;
+  min-width: 215px;
+  padding: 0 12px;
+  page-break-inside: avoid;
+  position: relative;
+  width: 100%;
+
+  /*-moz-box-shadow:0 0 40px rgba(255,255,255,1);*/
+  /*-webkit-box-shadow:0 0 40px rgba(255,255,255,1);*/
+  /*box-shadow:0 0 40px rgba(255,255,255,1);*/
+  border: 2px solid #1d599e;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.platform-tag{
+  background: #fff none repeat scroll 0 0;
+  left: 0;
+  margin: 15px;
+  padding: 6px 20px;
+  position: absolute;
+  top: 0;
+  color: #1d599e!important;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+
+}
+
+.gamecard-title {
+  font-size: 22px;
+  color: #1d599e;
+  font-weight: 400;
+  margin-left: 10px;
+  float: left;
+  line-height: 1;
+
+}
+
+.gamecard-icon:before{
+  background: rgba(0, 0, 0, 0) url("../img/game-icon.svg") no-repeat scroll 0 0;
+  color: #0d72b1;
+  content: "";
+  fill: currentcolor;
+  height: 25px;
+  width: 25px;
+  float: left;
+}
+
+.gamecard-icon{
+  height: 29px;
+  float: left;
+}
+
+.populars-header {
+  background: #fff none repeat scroll 0 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px;
+  color: #1d599e!important;
+  font-size: 28px;
+  font-weight: 300;
+  display:inline-block;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Rubik", Helvetica, Arial, sans-serif;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  /*border: 2px solid #1d599e;*/
+}
+.populars-header:hover,
+.populars-header:active,
+.populars-header:focus,
+.populars-header:hover:focus{
+  text-decoration: none;
+}
+.populars-footer {
+  background: #fff none repeat scroll 0 0;
+  margin-top: 5px;
+  padding: 10px;
+  color: #1d599e!important;
+  font-size: 32px;
+  font-weight: 300;
+  display:inline-block;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Rubik", Helvetica, Arial, sans-serif;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  /*border: 2px solid #1d599e;*/
+}
+.populars-grid {
+  height: 285px;
+  background-color: rgba(255,255,255,.85);
+}
+/* Mobile header/footers styling */
+@media (max-width: 768px) {
+  .populars-header,
+  .populars-footer{
+    margin-right: 15px;
+    width: 215px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .gamecard:last-child{
+    margin-right: 15px !important;
+  }
+}
+
+@media (max-width:768px) {
+  .gamecard {
+    width: 100%!important;
+    margin-bottom:15px;
+  }
+}
+
+.motd-alert {
+  border: 1px solid white;
+  border-top: 0;
+  margin-bottom: 0;
+}
+
+.input-group-addon {
+  min-width:150px;
+  text-align:left;
+}
+
+
+#statsModal .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: transparent;
+  border-color: #808080;
+  opacity: 1;
+  border-radius: 0;
+}
+
+#statsModal .input-group-addon {
+  background: transparent;
+  border-color: #28549E;
+  border-radius: 0;
+  color: #28549E;
+  border-width: 2px;
+}
+#statsModal .input-group {
+  margin-bottom: 4px;
+}
+#statsModal .input-group-addon {
+  min-width:300px;
+  text-align:left;
+}
+
+.dash-btn-col {
+  margin-top: 20px;
+}

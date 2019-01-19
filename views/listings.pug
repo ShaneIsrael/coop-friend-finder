@@ -1,0 +1,70 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/listing.css', rel='stylesheet', media='screen')
+
+
+    body
+        include layouts/navbar.pug
+
+        div.container-fluid
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            if successMessage != ''
+                div.alert.alert-info(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{successMessage}
+            div.btn-toolbar
+                button.btn.btn-primary(data-toggle="modal" data-target="#filterListingsModal") Filter
+                button.btn.btn-info(data-toggle="modal" data-target="#createListingModal") Create Game
+                button.btn.btn-info(data-toggle="modal" data-target="#createServerListingModal") Create Server
+            br
+            if results
+                div
+                    h3 Showing #{results} / #{resultsTotal} results
+            if listings.length > 0
+                - var size = listings.length
+                - listings = listings.reverse()
+                .row
+                    .list-group
+                        .col-lg-6
+                            - for(var i = 0; i < size; i+=2)
+                                - var val = listings[i]
+                                if val.type == 'game'
+                                    include layouts/listing.pug
+                                else
+                                    include layouts/listingServer.pug
+                        .col-lg-6
+                            - for(var i = 1; i < size; i+=2)
+                                - var val = listings[i]
+                                if val.type == 'game'
+                                    include layouts/listing.pug
+                                else
+                                    include layouts/listingServer.pug
+
+            else
+                div.alert.alert-info
+                    h1.noListings.text-center No listings could be found
+
+        include modals/filterListings.pug
+        include modals/createListing.pug
+        include modals/createServerListingModal.pug
+
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/moment.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/client.js')
+    script(src='/js/notifications.js')
+    script(src='/js/listing.js')

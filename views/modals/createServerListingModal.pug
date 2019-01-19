@@ -1,0 +1,60 @@
+div(class="modal fade" role="dialog" id="createServerListingModal")
+    div(class="modal-dialog")
+        div(class="modal-content")
+            div(class="modal-header")
+                button(type="button" class="close" data-dismiss="modal") &times;
+                h4(class="modal-title") New Server Listing
+            form(id="createServerForm" role="form")
+                input(type='hidden', name='_csrf', value=_csrf)
+                div(class="modal-body")
+                    div(class="form-group")
+                        .input-group
+                            span.input-group-addon#serverGame Game
+                            input(aria-describedby="serverGame" type="text" class="form-control" name="game" placeholder="e.x.: Minecraft" required autofocus)
+                        .input-group
+                            span.input-group-addon#serverName Server Name
+                            input(aria-describedby="serverName" type="text" class="form-control" name="serverName" placeholder="e.x.: 24/7 Minecraft Survival" required)
+                        .input-group
+                            span.input-group-addon#serverHost Server Address
+                            input(aria-describedby="serverHost" type="text" class="form-control" name="serverHost" placeholder="e.x.: my-awesome-server.com" required)
+                        .input-group
+                            span.input-group-addon#serverPort Server Port
+                            input(aria-describedby="serverPort" type="number" class="form-control" name="serverPort" placeholder="1337")
+                        .input-group
+                            span.input-group-addon#serverCapacity Max Players
+                            input(aria-describedby="serverCapacity" type="number" class="form-control" name="serverCapacity" placeholder="32" required)
+                        .input-group
+                            span.input-group-addon Server Region
+                            select(id="serverRegion" class="form-control" name="region" required)
+                                option(value="n-america") North America
+                                option(value="s-america") South America
+                                option(value="europe") Europe
+                                option(value="middle-east") Middle East
+                                option(value="aus") Australia
+                                option(value="aus-oceana") Australia Oceana
+                                option(value="japan-asia") Japan / Asia
+                                option(value="china") China
+                                option(value="africa") Africa
+                        .input-group
+                            span.input-group-addon#voiceServer Voice Server
+                            input.voiceServer(aria-describedby="voiceServer" type="text" class="form-control" name="voiceServer" placeholder="e.x.: my-voice-server.ts3.com:9000")
+                        .input-group
+                            span.input-group-addon#voiceServerPassword Voice Password
+                            input.voiceServerPassword(aria-describedby="voiceServerPassword" type="text" class="form-control" name="voiceServerPassword" placeholder="e.x.: FuzzyBunnySlippers")
+                        .input-group
+                            span.input-group-addon Platform
+                            select(id="serverPlatform" class="form-control" name="platform" required)
+                                option(value="PC") PC
+                                option(value="Xbox One") Xbox One
+                                option(value="Xbox 360") Xbox 360
+                                option(value="Playstation 4") Playstation 4
+                                option(value="Playstation 3") Playstation 3
+                        .input-group
+                            span.input-group-addon#platformName In-Game Name
+                            input(aria-describedby="platformName" type="text" class="form-control" name="platformUsername" placeholder="e.x.: BugCatcherJoey" required)
+                        .input-group
+                            span.input-group-addon Server Notes
+                            textarea(class="form-control serverNotes" rows="4" name="notes" placeholder="e.x.: Griefing will result in ban")
+                        h6(class="pull-right serverNotesCountMessage") 500 remaining
+                div(class="modal-footer")
+                    button(type="submit" id="serverListingModalSubmit" class="btn btn-success btn-block modal-submit") Create Server Listing

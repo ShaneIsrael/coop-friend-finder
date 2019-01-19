@@ -1,0 +1,58 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/listing.css', rel='stylesheet', media='screen')
+        link(href='/css/login.css', rel='stylesheet', media='screen')
+        script(src='https://www.google.com/recaptcha/api.js')
+
+
+    body
+        include layouts/navbarLanding.pug
+
+
+        div.container
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            hr
+            if listings.length > 0
+                div.list-group
+                    each val in listings
+                        -var voip = val.voip ? "Required" : "Not Required"
+                        a.list-group-item
+                            div(data-toggle="collapse" href="#listCollapse" + val.listingId)
+                                div.list-group-item-heading
+                                    h2=val.game
+                                    include layouts/regionDisplay.pug
+                                    span.badge(style='')
+                                        span.voice(data-role='icon', data-toggle='tooltip', title='voice')
+                                            img(src='img/voice.svg')
+                                        | #{voip}
+                                    span.badge.pull-right=val.timeAlive
+                                include layouts/platformDisplay.pug
+                                img.toggle-arrow.pull-right(src='img/toggle_arrow.svg', data-toggle='tooltip', title='Arrow')
+                            div(id="listCollapse" + val.listingId class="collapse")
+                                if val.notes
+                                    div.well
+                                        p=val.notes
+                                h5.username
+                                    b Posted by •
+                                    |  #{val.username}
+                                hr
+            else
+                div.alert.alert-info
+                    h1.noListings.text-center No listings could be found
+
+        include modals/loginModal.pug
+
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/landing.js')

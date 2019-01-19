@@ -1,0 +1,74 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/modal-minimize.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/app-inner.css', rel='stylesheet', media='screen')
+        link(href='/css/home.css', rel='stylesheet', media='screen')
+
+    body
+        include layouts/navbar.pug
+        .app-container
+            .container
+                .row
+                    if motd
+                        div.alert.alert-info.motd-alert(data-status="shown") #{motd}
+                    if errorMessage != ''
+                        div.alert.alert-danger(id="slideAlert")
+                            a.close(data-dismiss="alert" aria-label="close") &times;
+                            | #{errorMessage}
+                .row
+                    .dash-navi.text-center
+                        .col-lg-4.dash-btn-col
+                            a.btn.btn-block.btn-info(data-toggle="modal" data-target="#createListingModal")
+                                i(class="fa-cff fa-plus-circle fa-5x")
+                                br
+                                | NEW GAME LISTING
+                        .col-lg-4.dash-btn-col
+                            a.btn.btn-block.btn-info(data-toggle="modal" data-target="#createServerListingModal")
+                                i(class="fa fa-server fa-5x")
+                                br
+                                | NEW SERVER LISTING
+                        .col-lg-4.dash-btn-col
+                            a.btn.btn-block.btn-info(data-toggle="modal" data-target="#statsModal")
+                                i(class="fa fa-bar-chart fa-5x")
+                                br
+                                | VIEW STATS
+                .row.text-center
+                    .populars
+                        a.populars-header(data-toggle="collapse" href="#grid") Popular Games
+                        .populars-grid.collapse.in#grid
+                            - for (var i = 1; i < 6; ++i)
+                                -var game = gameTitles[i-1]
+                                -var func = "displayGamecardModal('"+game+"')"
+                                a.gamecard(href="javascript:undefined" onclick=func class="gamecard-" + i)
+                                    div.gamecard-inner
+                                        //span.platform-tag
+                                        span.gamecard-icon
+                                        span.gamecard-title=game
+                        .populars-footer
+            .minmaxCon
+                include modals/chatModal.pug
+
+            include modals/createListing.pug
+            include modals/createServerListingModal.pug
+            include modals/gamecardModal.pug
+            include modals/statsModal.pug
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/js/lib/jquery-ui.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/lib/moment.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/client.js')
+    script(src='/js/chat.js')
+    script(src='/js/notifications.js')
+    script(src='/js/minimize-modal.js')
+    script(src='/js/home.js')

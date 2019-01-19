@@ -1,0 +1,55 @@
+div(class="modal fade" role="dialog" id="createListingModal")
+    div(class="modal-dialog")
+        div(class="modal-content")
+            div(class="modal-header")
+                button(type="button" class="close" data-dismiss="modal") &times;
+                h4(class="modal-title") New Coop Game Listing
+            form(id="createListingForm" role="form")
+                input(type='hidden', name='_csrf', value=_csrf)
+                div(class="modal-body")
+                    div(class="form-group")
+                        .input-group
+                            span.input-group-addon Game Title
+                            input(id="gameTitle" aria-describedby="gameTitle" type="text" class="form-control" name="game" placeholder="e.x Rise of the Tomb Raider" required autofocus)
+                        .input-group
+                            span.input-group-addon Platform
+                            select(id="platform" class="form-control" name="platform" required)
+                                option(value="Steam") Steam
+                                option(value="Origin") Origin
+                                option(value="Battle.net") Battle.net
+                                option(value="PC") Other PC
+                                option(value="Xbox One") Xbox One
+                                option(value="Xbox 360") Xbox 360
+                                option(value="Playstation 4") Playstation 4
+                                option(value="Playstation 3") Playstation 3
+                        .input-group
+                            span.input-group-addon Region
+                            select(id="region" class="form-control" name="region" required)
+                                option(value="n-america") North America
+                                option(value="s-america") South America
+                                option(value="europe") Europe
+                                option(value="middle-east") Middle East
+                                option(value="aus") Australia
+                                option(value="aus-oceana") Australia Oceana
+                                option(value="japan-asia") Japan / Asia
+                                option(value="china") China
+                                option(value="africa") Africa
+                        .input-group
+                            span.input-group-addon#voiceServer Voice Server
+                            input.voiceServer(aria-describedby="voiceServer" type="text" class="form-control" name="voiceServer" placeholder="e.x.: my-voice-server.ts3.com:9000")
+                        .input-group
+                            span.input-group-addon#voiceServerPassword Voice Password
+                            input.voiceServerPassword(aria-describedby="voiceServerPassword" type="text" class="form-control" name="voiceServerPassword" placeholder="e.x.: FuzzyBunnySlippers")
+                        .input-group
+                            span.input-group-addon In-Game Name
+                            input(type="text" class="form-control" name="platformUsername" placeholder="Platform Username" required)
+                        .input-group
+                            span.input-group-addon Notes
+                            textarea(id="notesArea" class="form-control notes" rows="4" name="notes" placeholder="Say something about yourself or what you want to accomplish ...")
+                        h6(class="pull-right notesCountMessage") 500 remaining
+                        .checkbox
+                            label
+                                input(id="voip" type="checkbox" name="voip")
+                                b Require VoIP
+                div(class="modal-footer")
+                    button(type="submit" id="listingModalSubmit" class="btn btn-success btn-block modal-submit") Create Listing

@@ -1,0 +1,40 @@
+if val.region == 'n-america'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='NA')
+        | North America
+else if val.region == 's-america'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='SA')
+        | South America
+else if val.region == 'europe'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='EU')
+        | Europe
+else if val.region == 'aus'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='AUS')
+        | Australia
+else if val.region == 'japan-asia'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='JA')
+        | Japan / Asia
+else if val.region == 'china'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='CH')
+        | China
+else if val.region == 'africa'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='AF')
+        | Africa
+else if val.region == 'middle-east'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='ME')
+        | Middle East
+else if val.region == 'aus-oceana'
+    span.badge
+        span.country(data-role='icon', data-toggle='tooltip', title='AUS-O')
+        | Australia Oceana
+else
+    span.badge
+        span.country
+        | Unknown

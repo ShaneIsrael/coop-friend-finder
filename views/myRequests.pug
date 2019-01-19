@@ -1,0 +1,62 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/requests.css', rel='stylesheet', media='screen')
+
+
+
+    body
+        include layouts/navbar.pug
+
+        div.container
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            if successMessage != ''
+                div.alert.alert-success(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{successMessage}
+            if requests.length > 0
+                div.list-group
+                    each val in requests
+                        a.list-group-item
+                            div.list-group-item-heading
+                                span.badge.pull-right=val.timeAlive
+                                h2=val.game
+                            hr
+                            .row.listing-details
+                                span.badge
+                                    span
+                                        strong=val.username
+                                        |  wants to play this game with you!
+                            include layouts/platformDisplay.pug
+                            hr
+                            .btn-toolbar
+                                form(method="POST" action="acceptRequest")
+                                    input(type='hidden', name='_csrf', value=_csrf)
+                                    button.btn.btn-sm.btn-primary(name="id" value=val.id type="submit") Accept Request
+                                form(method="POST" action="declineRequest")
+                                    input(type='hidden', name='_csrf', value=_csrf)
+                                    button.btn.btn-sm.btn-danger.decline-btn(name="id" value=val.id type="submit") Decline Request
+                                button.addContact.btn.btn-sm.btn-success.addContact-btn(type="button" value=val.username) Add Contact
+            else
+                div.alert.alert-info
+                    h1.noListings.text-center No pending requests
+
+
+
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/client.js')
+    script(src='/js/notifications.js')

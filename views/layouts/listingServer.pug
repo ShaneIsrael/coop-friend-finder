@@ -1,0 +1,64 @@
+a.list-group-item.serverItem
+    .online-led
+        span.fa.fa-server.fa-2x.pull-right(data-toggle='tooltip', title='offline')
+    .ribbon-wrapper
+        .ribbon.ribbon-blue.text-uppercase=val.type
+    div(data-toggle="collapse" href="#listCollapse" + val.listingId)
+        div.list-group-item-heading
+            h2=val.game
+            span.badge.pull-right=val.timeAlive
+        .row.listing-details
+            include regionDisplay.pug
+            include rating.pug
+        include platformDisplay.pug
+        img.toggle-arrow.pull-right(src='img/toggle_arrow.svg', data-toggle='tooltip', title='Arrow')
+    div(id="listCollapse" + val.listingId class="collapse")
+        br
+        .input-group
+            span.input-group-addon#serverName Server Name
+            input.serverName(aria-describedby="serverName" type="text" class="form-control" name="serverName" value=val.serverName readonly)
+        .input-group
+            span.input-group-addon#serverHost Server Address
+            input.serverHost(aria-describedby="serverHost" type="text" class="form-control" name="serverHost" value=val.serverHost readonly)
+        if val.serverPort
+            .input-group
+                span.input-group-addon#serverPort Server Port
+                input.serverPort(aria-describedby="serverPort" type="number" class="form-control" name="serverPort" value=val.serverPort readonly)
+        .input-group
+            span.input-group-addon#serverCapacity Max Players
+            input.serverCapacity(aria-describedby="serverCapacity" type="number" class="form-control" name="serverCapacity" value=val.serverCapacity readonly)
+        if val.voiceServer
+            .input-group
+                span.input-group-addon#voiceServer Voice Server
+                input.voiceServer(aria-describedby="voiceServer" type="text" class="form-control" name="voiceServer" value=val.voiceServer readonly)
+        if val.voiceServerPassword
+            .input-group
+                span.input-group-addon#voiceServerPassword Voice Password
+                input.voiceServerPassword(aria-describedby="voiceServerPassword" type="text" class="form-control" name="voiceServerPassword" value=val.voiceServerPassword readonly)
+        if val.notes
+            div.well
+                p=val.notes
+        if myListing
+            h5.username
+                b In-Game Name •
+                |  #{val.username}
+            form(method="POST" action="deleteListing")
+                input(type='hidden', name='_csrf', value=_csrf)
+                span.badge.badge-danger.pull-right expires  #{val.expires}
+                button.btn.btn-danger(class="deleteListing" name="id" value=val.listingId type="submit") Delete Listing
+        else
+            h5.username
+                b Posted by •
+                |  #{val.username}
+            if isAdmin
+                hr
+                .btn-group-sm
+                    form(method='POST' action='/admin/deleteListing' role='form')
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        button.adminDeleteListing.btn.btn-sm.btn-warning(type='submit' name='id' value=val.listingId) Delete Listing
+                    form(method='POST' action='/admin/ban' role='form')
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        button.adminBanUser.btn.btn-sm.btn-danger(type='submit' name='username' value=val.username) Ban User
+            hr
+            div.btn-toolbar
+                button.addContact.btn.btn-sm.btn-success(value=val.username) Add Contact

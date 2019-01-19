@@ -1,0 +1,75 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/messages.css', rel='stylesheet', media='screen')
+
+    body
+        include layouts/navbar.pug
+
+        .container-fluid
+            if errorMessage != ''
+                div.alert.alert-danger
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            .btn-toolbar
+                a.btn.btn-success(data-toggle="modal" data-target="#composeMessageModal")
+                    i.fa.fa-edit
+                    |  Compose
+            hr
+            .row
+                .col-md-6.column
+                    a.list-group-item.active Inbox
+                    .list-group.messageList
+                        if messages.length > 0
+                            each message in messages
+                                if message.unread
+                                    a.list-group-item.messageItem(messageSubject=message.subject messageBody=message.body messageId=message.id unread=message.unread messageFrom=message.fromUsername)
+                                        span.badge.readStatus #{message.timeAlive}
+                                        h3.list-group-item-heading #{message.subject}
+                                        hr
+                                        h5.list-group-item-text
+                                            | //
+                                            b=message.fromUsername
+                                        form(role="form" method="POST" action="/deleteMessage")
+                                            input(type='hidden', name='_csrf', value=_csrf)
+                                            button.btn.btn-danger.btn-sm.pull-right.buttonDeleteMessage(type="submit" name="messageId" value=message.id) delete
+                                else
+                                    a.list-group-item.messageItem.read(messageSubject=message.subject messageBody=message.body messageId=message.id unread=message.unread)
+                                        span.badge.readStatus read
+                                        h3.list-group-item-heading #{message.subject}
+                                        hr
+                                        h5.list-group-item-text
+                                            | //
+                                            b=message.fromUsername
+                                        form(role="form" method="POST" action="/deleteMessage")
+                                            input(type='hidden', name='_csrf', value=_csrf)
+                                            button.btn.btn-danger.btn-sm.pull-right.buttonDeleteMessage(type="submit" name="messageId" value=message.id) delete
+                        else
+                            .list-group-item
+                                h1.list-group-item-head.text-center NO NEW MESSAGES
+                    a.list-group-item.active
+                .col-md-6.column
+                    .panel.panel-primary.messagePanel.hidden
+                        .panel-heading
+                        p.panel-body
+                        .panel-footer
+                            .btn-toolbar
+                                button.btn.btn-md.btn-success.quickSendMessage
+                                    i.fa.fa-reply
+                                    |  Reply
+
+        include modals/composeMessage.pug
+        include modals/contactList.pug
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/message.js')
+    script(src='/js/notifications.js')

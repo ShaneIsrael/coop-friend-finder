@@ -1,0 +1,43 @@
+.messageItem {
+    margin-bottom: 5px;
+}
+.selected-message {
+    background: #ecf0f1;
+}
+.panel {
+    border-radius: 0;
+}
+.list-group {
+    max-height: 50%;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+     display: none;
+}
+
+.buttonDeleteMessage {
+    position: relative;
+    top: -15px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-family:Rubik, Helvetica, Arial, sans-serif;
+}
+.readStatus {
+    min-width: 50px;
+    font-family:Rubik, Helvetica, Arial, sans-serif;
+}
+.viewContactsButton {
+    margin-left: -20px;
+}
+
+
+@media (max-width: 414px) {
+    .list-group {
+        max-height: 25%;
+    }
+}
+
+.read {
+    background-color: rgb(223, 228, 239);
+}

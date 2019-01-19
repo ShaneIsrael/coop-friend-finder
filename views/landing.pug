@@ -1,0 +1,106 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(property="og:title" content="CO-OP Friend Finder")
+        meta(property="og:description" content="Find other gamers online to play your favorite co-op games with.")
+        meta(property="og:image" content="https://coopfriendfinder.com/img/coopff_logo.ico.png")
+        meta(property="og:image:width" content="200")
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/new-age.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/login.css', rel='stylesheet', media='screen')
+        link(href='/css/landing.css', rel='stylesheet', media='screen')
+        link(href="https://checkout.stripe.com/v3/checkout/button.css" rel="stylesheet")
+        script(src='https://www.google.com/recaptcha/api.js')
+
+    body
+        include layouts/navbarLanding.pug
+
+    header
+        .container.landing-heros
+            .row
+                if successMessage != ''
+                    .alert.alert-info
+                        a.close(data-dismiss="alert" aria-label="close") &times;
+                        | #{successMessage}
+                .highlight
+                    .col-sm-7
+                        .hero-image
+                            img(src='img/coopff_hero.png')
+                    .col-sm-5
+                        .header-content
+                            .header-content-inner
+                                h1 Find people to play your favorite games with on your favorite platforms.
+                                a.landing-btn.btn.btn-outline.btn-xl(data-toggle='modal' data-target='#loginModal') Login
+                                a.landing-btn.btn.btn-outline.btn-xl(data-toggle='modal' data-target='#signupModal') Sign Up
+                .highlight
+                    .col-sm-5
+                        .header-content
+                            .header-content-inner
+                                h1 Create game specific listings. A great way to make lasting online friends.
+                    .col-sm-7
+                        .hero-image
+                            img(src='img/coopff_platforms.png')
+                .highlight
+                    .col-sm-7
+                        .hero-image
+                            img(src='img/ratings.jpg')
+                    .col-sm-5
+                        .header-content
+                            .header-content-inner
+                                h1 Hosting a new server on your favorite game? List it here for people to see!
+        .row.support
+            .highlight-support.container
+                h1 Support the Project
+                .subtext-support
+                    | Coop Friend Finder is a free service and while I am aiming to create a flexible and useful online tool for gamers
+                    | servers to host the site and coffee to keep me up working late at night still cost money. Please help keep this free service
+                    | ad-free by supporting the project.
+                .pledge
+                    if donationCount > 0
+                        .col-sm-6
+                            h1 #{donationCount} users have pledged this month
+                        .col-sm-6
+                            - var pledgePercentage = Math.floor((donationAmount / donationGoal) * 100) > 100 ? 100 : Math.floor((donationAmount / donationGoal) * 100)
+                            - var widthStyle = "width: "+pledgePercentage+"%;"
+                            if pledgePercentage > 89
+                                .progress.green
+                                    .progress-bar.green.progress-bar-success(role="progressbar" aria-valuenow=pledgePercentage aria-valuemin="0" aria-valuemax="100" style=widthStyle)
+                                        span.progress-completed-success
+                                            span.progress-type.green $#{donationAmount} pledged
+                                            span.progress-value #{pledgePercentage}%
+                                        span.sr-only #{pledgePercentage}% Complete (success)
+                            else
+                                .progress.orange
+                                    .progress-bar.orange.progress-bar-warning(role="progressbar" aria-valuenow="#{pledgePercentage}%" aria-valuemin="0" aria-valuemax="100" style=widthStyle)
+                                        span.progress-completed-warning
+                                            span.progress-type.orange $#{donationAmount} pledged
+                                            span.progress-value #{pledgePercentage}%
+                                        span.sr-only #{pledgePercentage}% Complete (success)
+                        .col-sm-12
+                            a.btn.btn-outline.pledge-btn-xl(data-toggle='modal' data-target='#donateModal') Support Us
+                            img(src='img/powered_by_stripe.png')
+                    else
+                        .col-sm-12
+                            h1 0 users have supported the project this month.
+                        .col-sm-12
+                            a.btn.btn-outline.pledge-btn-xl(data-toggle='modal' data-target='#donateModal') Support Us
+                            img(src='img/powered_by_stripe.png')
+
+
+
+
+    include modals/loginModal.pug
+    include modals/signupModal.pug
+    include modals/donateModal.pug
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='https://checkout.stripe.com/checkout.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='js/landing.js')
+    script(src='/js/donation.js')

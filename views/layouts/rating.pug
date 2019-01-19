@@ -1,0 +1,30 @@
+if val
+    if val.rating >= 75
+        span.badge(style='font-weight:400; color:#64A752;')
+            span.rating(data-role='icon', data-toggle='tooltip', title='Rating')
+                img(src='img/positive_rating.svg')
+            | #{val.rating}% User Rating
+    else if val.rating >= 60
+        span.badge(style='font-weight:400; color:#D69627;')
+            span.rating(data-role='icon', data-toggle='tooltip', title='Rating')
+                img(src='img/neutral_rating.svg')
+            | #{val.rating}% User Rating
+    else
+        span.badge(style='font-weight:400; color:#C25B4D;')
+            span.rating(data-role='icon', data-toggle='tooltip', title='Rating')
+                img(src='img/negative_rating.svg')
+            | #{val.rating}% User Rating
+
+else if rating
+    if rating >= 75
+        .progress
+            .progress-bar.progress-bar-striped.progress-bar-success.active(role='progressbar' aria-valuenow=rating aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: " + rating + "%")
+                |User Rating - #{rating}%
+    else if rating >= 60
+        .progress
+            .progress-bar.progress-bar-striped.progress-bar-warning.active(role='progressbar' aria-valuenow=rating aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: " + rating + "%")
+                |User Rating - #{rating}%
+    else
+        .progress
+            .progress-bar.progress-bar-striped.progress-bar-danger.active(role='progressbar' aria-valuenow=rating aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: " + rating + "%")
+                |User Rating - #{rating}%

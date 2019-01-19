@@ -1,0 +1,18 @@
+if val.platform == 'Steam'
+    img.platformImage(src='/img/icon_steam.png' data-toggle="tooltip" title="Steam")
+else if val.platform == 'Origin'
+    img.platformImage(src='/img/icon_origin.png' data-toggle="tooltip" title="Origin")
+else if val.platform == 'Battle.net'
+    img.platformImage(src='/img/icon_battle.net.png' data-toggle="tooltip" title="Battle.net")
+else if val.platform == 'PC'
+    img.platformImage(src='/img/icon_pc.png' data-toggle="tooltip" title="Other PC")
+else if val.platform == 'Xbox One'
+    img.platformImage(src='/img/icon_xboxOne.png' data-toggle="tooltip" title="Xbox One")
+else if val.platform == 'Xbox 360'
+    img.platformImage(src='/img/icon_xbox360.png' data-toggle="tooltip" title="Xbox 360")
+else if val.platform == 'Playstation 4'
+    img.platformImage(src='/img/icon_ps4.png' data-toggle="tooltip" title="Playstation 4")
+else if val.platform == 'Playstation 3'
+    img.platformImage(src='/img/icon_ps3.png' data-toggle="tooltip" title="Playstation 3")
+else
+    b Unknown Platform

@@ -1,0 +1,321 @@
+.platformImage {
+    margin-top: 10px;
+}
+@media (min-width:768px) {
+    .listing-details {
+        background: rgba(8,112,158,0.12);
+        background: linear-gradient(to right, rgba(0,0,0,0), rgba(8,112,158,0.12), rgba(0,0,0,0));
+    }
+}
+.notesBox p {
+    max-with: 400px;
+    border-top: 1px solid gray;
+    padding-left: 10px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.list-group {
+    max-height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.list-group h2 {
+    font-size: 32px;
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    color: #28549E;
+    line-height: 0.656;
+    float: left;
+    font-weight: 400;
+
+}
+
+.list-group hr {
+    border-color: #1d589e;
+
+}
+
+.list-group-item {
+    border-width: 0px;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    background-color: rgba(221, 234, 255, 0.84);
+    padding: 25px 50px 35px;
+    cursor: pointer;
+}
+.btn-success-brighter {
+    color: #ffffff;
+    background-color: #1ebd54;
+    border-Color: #1ebd54;
+}
+
+.badge-danger {
+    background-color: red;
+}
+
+.badge {
+    background: none;
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 4;
+    color: rgb(29, 89, 158);
+    letter-spacing: 1px;
+    float:left;
+    padding: 3px 30px;
+}
+.badge:first-child {
+    padding: 0 0 0 19px;
+}
+.well {
+    background: none;
+    border:none;
+    font-size: 16px;
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    max-width: 872px;
+    letter-spacing: 0.5px;
+}
+
+.username {
+    font-size: 16px;
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.list-group-item h5{
+    font-size: 16px;
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.list-group-item-heading {
+    margin-bottom: 0;
+    margin-top: 0;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+
+
+.list-group .badge:last-child{
+    padding: 3px 0px!important;
+}
+
+.list-group-item-heading > .span{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.list-group-item hr {
+    margin: 0 0 1em!important;
+}
+
+a.list-group-item, button.list-group-item p {
+    color: #5e5e5e;
+
+}
+
+.rating {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: text-bottom;
+}
+
+.voice {
+    display: inline-block;
+    margin-right: 10px;
+    max-width: 26px;
+}
+img.toggle-arrow.pull-right {
+    margin-top: 10px;
+}
+.toggle-arrow {
+    float: right!important;
+}
+
+@media (max-width:768px) {
+    .list-group h2{
+        line-height: 1;
+    }
+
+
+}
+
+@media (max-width:1024px) {
+
+    .list-group .badge:last-child{
+        padding: 3px 30px!important;
+        float:left!important;
+    }
+    .toggle-arrow {
+        float: left!important;
+    }
+
+}
+
+/* ADMIN BUTTONS CSS */
+.btn-sm, .btn-group-sm > .btn {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        border-radius: 0;
+        float: right;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 10px;
+        padding: 10px 15px;
+}
+
+.btn-warning {
+        border-color: #f39c12;
+        color: #f29810;
+}
+
+.btn-danger {
+        background-color: #e74c3c;
+        border-color: #e74c3c;
+        color: #e74c3c;
+}
+
+.btn-group-sm {
+        float: right;
+}
+
+.btn-group-sm > form {
+        float: left;
+}
+
+.btn-sm, .btn-group-sm > .btn:first-child {
+    margin-right:10px;
+}
+
+.btn, .btn-toolbar .btn{
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    letter-spacing:1.5px;
+
+}
+@media (max-width: 768px) {
+    .btn-sm, .btn-group-sm > .btn {
+            margin: 0!important;
+    }
+    .btn-toolbar .btn {
+        margin-top: 10px;
+    }
+}
+
+.ribbon-wrapper {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+}
+
+.ribbon {
+    font: bold 15px "Rubik", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+    color: #333;
+    text-align: center;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform:    rotate(-45deg);
+    -ms-transform:     rotate(-45deg);
+    -o-transform:      rotate(-45deg);
+    position: relative;
+    padding: 7px 0;
+    right: -5px;
+    top: 15px;
+    width: 120px;
+    color: #FFFFFF;
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+    box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+    float: right
+}
+
+.ribbon-blue:before, .ribbon:after {
+    content: "";
+    border-top:   3px solid #1e5799;
+    border-left:  3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: -3px;
+}
+.ribbon-green:before, .ribbon-green:after {
+    content: "";
+    border-top:   3px solid #79A70A;
+    border-left:  3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: -3px;
+}
+.ribbon-black:before, .ribbon-black:after {
+    content: "";
+    border-top:   3px solid black;
+    border-left:  3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: -3px;
+}
+.ribbon-red:before, .ribbon-red:after {
+    content: "";
+    border-top:   3px solid #ac0f09;
+    border-left:  3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: -3px;
+}
+.ribbon-blue {
+    background-color: #2989D8;
+}
+.ribbon-green {
+     background-color: #9BC90D;
+ }
+.ribbon-black {
+    background-color: #2a2a2a;
+}
+.ribbon-red {
+    background-color: red;
+}
+
+.ribbon:before {
+    left: 0;
+}
+.ribbon:after {
+    right: 0;
+}
+
+
+
+/** SERVER INPUTS READONLY **/
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: transparent;
+    border-color: #808080;
+    opacity: 1;
+    border-radius: 0;
+}
+
+.input-group-addon {
+    background: transparent;
+    border-color: #28549E;
+    border-radius: 0;
+    color: #28549E;
+    border-width: 2px;
+}
+.input-group {
+    margin-bottom: 4px;
+}
+.input-group-addon {
+    min-width:150px;
+    text-align:left;
+}
+
+.led-green {
+    color: #6EAC5F;
+}
+
+.led-red {
+
+    color: #C43636;
+}

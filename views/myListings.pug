@@ -1,0 +1,47 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/listing.css', rel='stylesheet', media='screen')
+
+
+    body
+        include layouts/navbar.pug
+
+        div.container
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            div.btn-toolbar
+                button.btn.btn-info(data-toggle="modal" data-target="#createListingModal") Create Game
+                button.btn.btn-info(data-toggle="modal" data-target="#createServerListingModal") Create Server
+            br
+            if listings.length > 0
+                div.list-group
+                    -var myListing = true
+                    each val in listings
+                        if val.type == 'game'
+                            include layouts/listing.pug
+                        else
+                            include layouts/listingServer.pug
+            else
+                div.alert.alert-info
+                    h1.noListings.text-center You have not made any listings
+
+            include modals/createListing.pug
+            include modals/createServerListingModal.pug
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/client.js')
+    script(src='/js/notifications.js')
+    script(src='/js/listing.js')

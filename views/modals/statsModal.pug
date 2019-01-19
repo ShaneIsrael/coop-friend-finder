@@ -1,0 +1,23 @@
+#statsModal.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button' data-dismiss="modal") &times;
+                h4.modal-title Site Stats
+            .modal-body
+                .form-group
+                    .input-group
+                        span.input-group-addon Total Accounts Created
+                        input(type="text" class="form-control" value=stats.totalAccountsCreated readonly)
+                    .input-group
+                        span.input-group-addon Total Listings Created
+                        input(type="text" class="form-control" value=stats.totalListingsCreated readonly)
+                    .input-group
+                        span.input-group-addon Currently Active Listings
+                        input(type="text" class="form-control" value=stats.currentListings readonly)
+                    .input-group
+                        span.input-group-addon Total Requests Made
+                        input(type="text" class="form-control" value=stats.totalRequestsMade readonly)
+                    .input-group
+                        span.input-group-addon Currently Active Requests
+                        input(type="text" class="form-control" value=stats.currentRequests readonly)

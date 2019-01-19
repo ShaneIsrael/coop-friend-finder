@@ -1,0 +1,26 @@
+#globalChatModal.modal.fade.in.min.minimizeableModal(data-backdrop="static" data-keyboard="false" style="display: block; padding-right: 15px;")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close.modalMinimize(type='button')
+                    i.fa.fa-minus
+                h4.modal-title Global Chat
+            .modal-body
+                a.list-group-item.active#chatHeade
+                #chat
+                    div.well#chatWell(username=username)
+                        .list-group#chatMessages
+                            if chatHistory && chatHistory.length > 0
+                                each message in chatHistory
+                                    -var nameStyle = message.username == username ? 'color: red' : 'color: orange'
+                                    a.list-group-item
+                                        span.badge.pull-right #{message.timestamp}
+                                        b(style=nameStyle) #{message.username}
+                                        | : #{message.content}
+                    .list-group-item.active
+                        form#chatForm
+                            input(type='hidden', name='_csrf', value=_csrf)
+                            .input-group
+                                input.form-control#message(type="text" autocomplete="off")
+                                span.input-group-btn
+                                    button.btn.btn-default.btn-success Send

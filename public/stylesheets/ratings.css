@@ -1,0 +1,37 @@
+.notesBox p {
+    max-with: 400px;
+    border-top: 1px solid gray;
+    padding-left: 10px;
+    font-size: 16px;
+    font-style: italic;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.list-group {
+    max-height: 80%;
+    overflow-y: scroll;
+}
+
+.list-group-item {
+    border-width: 3px;
+    border-color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.btn-success-brighter {
+    color: #ffffff;
+    background-color: #1ebd54;
+    border-Color: #1ebd54;
+}

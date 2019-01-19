@@ -1,0 +1,68 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href="https://checkout.stripe.com/v3/checkout/button.css" rel="stylesheet")
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/profile.css', rel='stylesheet', media='screen')
+
+
+    body
+        include layouts/navbar.pug
+
+        div.container
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            if successMessage != ''
+                div.alert.alert-info(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{successMessage}
+            div.profile-wall
+                h4 My Rating
+                include layouts/rating.pug
+                form#profileForm(role="form")
+                    input(type='hidden', name='_csrf', value=_csrf)
+                    div.input-group
+                        span.input-group-addon#emailTitle Email
+                        input.form-control(type='email' placeholder="Allows for email notifications of new game requests" name="email" value=profile.email aria-describedby='emailTitle')
+                    if subscribedToSms
+                        div.input-group
+                            span.input-group-addon#phoneTitle Cell Phone
+                            input.form-control(type='phone' placeholder="Get SMS Notifications - 10 digit cell phone number" name="phone" value=profile.phone aria-describedby='phoneTitle')
+                    else
+                        div.input-group
+                            span.input-group-addon#phoneTitle Cell Phone
+                            input.form-control(type='phone' placeholder="Purchase 1 Year SMS Notifications - $5.00" name="phone" aria-describedby='phoneTitle' disabled)
+                if !subscribedToSms
+                    form#purchaseSmsForm(method='POST' action='/chargeSms' role='form')
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key=stripe_pub_key, data-amount='500', data-name='COOP Friend Finder', data-description='1 Year SMS Subscription ($5.00)', data-image='/img/favicon.png', data-zip-code="true")
+                form(method='POST' action='/chargeDonation' role='form')
+                    input(type='hidden', name='_csrf', value=_csrf)
+                    input#stripeToken.form-control(type='hidden' name='stripeToken')
+                    .input-group
+                        span.input-group-addon $
+                        input#donateInput.form-control(type='number' min="0" step="1" name='amount' placeholder="Support our server costs by donating")
+                    button.stripe-button-el.stripe-pub-key#donateButton(data-key=stripe_pub_key)
+                        span(style="display: block; min-height: 30px;") Donate with Card
+                center
+                    div.btn-group
+                        button.btn.btn-default.btn-success.saveProfileButton(type='button') Save Profile
+
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='https://checkout.stripe.com/checkout.js')
+    script(src='/js/client.js')
+    script(src='/js/profile.js')
+    script(src='/js/notifications.js')
+    script(src='/js/donation.js')

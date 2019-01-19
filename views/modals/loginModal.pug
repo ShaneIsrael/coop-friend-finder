@@ -1,0 +1,18 @@
+div(class="modal fade" role="dialog" id="loginModal")
+    div(class="modal-dialog modal-sm")
+        div(class="modal-content")
+            div(class="modal-header login-title")
+                button(type="button" class="close" data-dismiss="modal") &times;
+                h2 Login
+            center
+                div(class="account-wall")
+                    div(id="loginAlert" class="alert alert-danger hidden")
+                    form(class="form-signin")
+                        input(id="csrf" type='hidden', name='_csrf', value=_csrf)
+                        label(for="inputUsername" class="sr-only") Username
+                        input(type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus)
+                        label(for="inputPassword" class="sr-only") Password
+                        input(type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required)
+                        button.login-btn.login-btn-success.btn-block(id="loginButton" type="submit") Login
+                    div(class="login-help")
+                        button.btn-sm.login-btn.login-btn-info(id="loginHelp" data-toggle="modal" data-target="#signupModal") Create an Account

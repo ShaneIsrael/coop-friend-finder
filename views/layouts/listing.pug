@@ -1,0 +1,66 @@
+-var voip = val.voip ? "Required" : "Not Required"
+a.list-group-item(listingId=val.listingId)
+    .ribbon-wrapper
+        .ribbon.ribbon-green.text-uppercase=val.type
+    div(data-toggle="collapse" href="#listCollapse" + val.listingId)
+        div.list-group-item-heading
+            h2=val.game
+            span.badge.pull-right=val.timeAlive
+        .row.listing-details
+            include regionDisplay.pug
+            include rating.pug
+            span.badge(style='')
+                span.voice(data-role='icon', data-toggle='tooltip', title='voice')
+                    img(src='img/voice.svg')
+                | #{voip}
+        include platformDisplay.pug
+        img.toggle-arrow.pull-right(src='img/toggle_arrow.svg', data-toggle='tooltip', title='Arrow')
+    div(id="listCollapse" + val.listingId class="collapse")
+        if displayVoiceServer
+            if val.voiceServer || val.voiceServerPassword
+                br
+            if val.voiceServer
+                .input-group
+                    span.input-group-addon#voiceServer Voice Server
+                    input.voiceServer(aria-describedby="voiceServer" type="text" class="form-control" name="voiceServer" value=val.voiceServer readonly)
+            if val.voiceServerPassword
+                .input-group
+                    span.input-group-addon#voiceServerPassword Voice Password
+                    input.voiceServerPassword(aria-describedby="voiceServerPassword" type="text" class="form-control" name="voiceServerPassword" value=val.voiceServerPassword readonly)
+        if val.notes
+            div.well
+                p=val.notes
+        if myListing
+            h5.username
+                b In-Game Name •
+                |  #{val.username}
+            form(method="POST" action="deleteListing")
+                input(type='hidden', name='_csrf', value=_csrf)
+                span.badge.badge-danger.pull-right expires  #{val.expires}
+                button.btn.btn-danger(class="deleteListing" name="id" value=val.listingId type="submit") Delete Listing
+        else
+            h5.username
+                b Posted by •
+                |  #{val.username}
+            if isAdmin
+                hr
+                .btn-group-sm
+                    form(method='POST' action='/admin/deleteListing' role='form')
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        button.adminDeleteListing.btn.btn-sm.btn-warning(type='submit' name='id' value=val.listingId) Delete Listing
+                    form(method='POST' action='/admin/ban' role='form')
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        button.adminBanUser.btn.btn-sm.btn-danger(type='submit' name='username' value=val.username) Ban User
+            hr
+            if val.requested == false
+                form(id="requestForm")
+                    input(id="csrf" type='hidden', name='_csrf', value=_csrf)
+                    input(id="platformUsername" type='hidden' name='platformUsername')
+                    input(type='hidden' name='listingId' value=val.listingId)
+                    div.btn-toolbar
+                        button.btn.btn-primary.btn-sm.requestButton(type="button" name=val.listingId platform=val.platform) Request to Play
+                        button.addContact.btn.btn-sm.btn-success(type="button" value=val.username) Add Contact
+            else
+                div.btn-toolbar
+                    button.btn.btn-sm.requestButton(type="button" disabled) Request Sent!
+                    button.addContact.btn.btn-sm.btn-success(type="button" value=val.username) Add Contact

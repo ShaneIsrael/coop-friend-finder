@@ -1,0 +1,53 @@
+html
+    head
+        title COOP Friend Finder
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(href='/css/lib/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/animate.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/font-awesome.css', rel='stylesheet', media='screen')
+        link(href='/css/lib/sweetalert2.min.css', rel='stylesheet', media='screen')
+        link(href='/css/app.css', rel='stylesheet', media='screen')
+        link(href='/css/requests.css', rel='stylesheet', media='screen')
+
+
+
+    body
+        include layouts/navbar.pug
+        div.container-fluid
+            if errorMessage != ''
+                div.alert.alert-danger(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{errorMessage}
+            if successMessage != ''
+                div.alert.alert-success(id="slideAlert")
+                    a.close(data-dismiss="alert" aria-label="close") &times;
+                    | #{successMessage}
+            if matches.length > 0
+                - var size = matches.length
+                .row
+                    .list-group
+                        .col-lg-6
+                            - for(var i = 0; i < size; i+=2)
+                                - var val = matches[i]
+                                include layouts/gameMatch.pug
+                        .col-lg-6
+                            - for(var i = 1; i < size; i+=2)
+                                - var val = matches[i]
+                                include layouts/gameMatch.pug
+            else
+                div.alert.alert-info
+                    h1.noListings.text-center You haven't had any match ups
+
+        include modals/composeMessage.pug
+        include modals/contactList.pug
+
+
+    script(src='/js/lib/jquery-1.11.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/bootstrap-notify.min.js')
+    script(src='/js/lib/sweetalert2.min.js')
+    script(src='/js/client.js')
+    script(src='/js/notifications.js')
+    script(src='/js/message.js')
+    script(src='/js/game-match.js')

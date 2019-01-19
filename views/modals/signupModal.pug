@@ -1,0 +1,21 @@
+div(class="modal fade" role="dialog" id="signupModal")
+    div(class="modal-dialog modal-sm")
+        div(class="modal-content")
+            div(class="modal-header login-title")
+                button(type="button" class="close" data-dismiss="modal") &times;
+                h2 Signup
+            center
+                div(class="account-wall")
+                    div(id="signupAlert" class="alert alert-danger hidden")
+                    form(id="signupForm" method="POST" action="/signup" class="form-signin")
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        label(for="inputSignupUsername" class="sr-only") Username
+                        input(type="text" id="inputSignupUsername" name="username" class="form-control" placeholder="Username" required autofocus)
+                        label(for="inputSignupPassword" class="sr-only") Password
+                        input(type="password" id="inputSignupPassword" name="password" class="form-control" placeholder="Password" required)
+                        label(for="inputSignupPassword2" class="sr-only") Repeat Password
+                        input(type="password" id="inputSignupPassword2" name="password2" class="form-control" placeholder="Repeat Password" required)
+                        div(class="g-recaptcha" data-sitekey="6LdpFygTAAAAAHQQX057wLaT_6K2HCTLw-kwP-Oh")
+                        button.login-btn.login-btn-success.btn-block(id="signupButton" type="submit") Create Account
+                    div(class="login-help")
+                        button.btn-sm.login-btn.login-btn-info(id="signupHelp" data-toggle="modal" data-target="#loginModal") Login

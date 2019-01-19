@@ -1,0 +1,53 @@
+div(class="modal fade" role="dialog" id="filterListingsModal")
+    div(class="modal-dialog")
+        div(class="modal-content")
+            div(class="modal-header")
+                button(type="button" class="close" data-dismiss="modal") &times;
+                h4(class="modal-title") Filter Settings
+            form(method="GET" action="/listingsFiltered" role="form")
+                input(type='hidden', name='_csrf', value=_csrf)
+                div(class="modal-body")
+                    div(class="form-group")
+                        label(for="gameTitle") Title / Partial Title
+                        input(id="gameTitle" type="text" class="form-control" name="contains" placeholder="e.x. Borderlands" autofocus)
+                        label(for="type") Listing Type
+                        select(id="type" class="form-control" name="type")
+                            option(value="Any") Any
+                            option(value="game") Game
+                            option(value="server") Server
+                        label(for="platform") Platform
+                        select(id="platform" class="form-control" name="platform")
+                            option(value="Any") Any
+                            option(value="PC All") PC All
+                            option(value="Steam") Steam
+                            option(value="Origin") Origin
+                            option(value="Battle.net") Battle.net
+                            option(value="PC") PC Other
+                            option(value="Xbox One") Xbox One
+                            option(value="Xbox 360") Xbox 360
+                            option(value="Playstation 4") Playstation 4
+                            option(value="Playstation 3") Playstation 3
+                        label(for="region") Region
+                        select(id="region" class="form-control" name="region")
+                            option(value="Any") Any
+                            option(value="n-america") North America
+                            option(value="s-america") South America
+                            option(value="europe") Europe
+                            option(value="middle-east") Middle East
+                            option(value="aus") Australia
+                            option(value="aus-oceana") Australia Oceana
+                            option(value="japan-asia") Japan / Asia
+                            option(value="china") China
+                            option(value="africa") Africa
+                        label(for="orderBy") Order By
+                        select(id="orderBy" class="form-control" name="orderBy")
+                            option(value="age asc") Newest First
+                            option(value="age desc") Oldest First
+                            option(value="alphabetical") Alphabetical [A-Z]
+                            option(value="user rating") User Rating
+                        .checkbox
+                            label
+                                input(id="voip" type="checkbox" name="voip")
+                                b Require Voice Chat
+                div(class="modal-footer")
+                    button(type="submit" class="btn btn-success btn-block modal-submit") Filter Listings

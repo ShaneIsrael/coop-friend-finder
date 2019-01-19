@@ -1,0 +1,24 @@
+#composeMessageModal.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Compose Message
+            .modal-body
+                form#composeMessageForm.form-horizontal(role='form')
+                    input(type='hidden', name='_csrf', value=_csrf)
+                    .form-group
+                        .input-group
+                            span.input-group-addon To
+                            input#inputTo.form-control(type='text' name='to' placeholder='Username of recipient' required autofocus)
+                            span.input-group-btn
+                                button.btn.btn-success.viewContactsButton(type="button") Contacts
+                        .input-group
+                            span.input-group-addon Subject
+                            input#inputSubject.form-control(type='text' name='subject' placeholder='subject' required)
+
+                        textarea#inputBody.form-control(rows='8' name='body' required)
+                        h6(class="pull-right" id="bodyCountMessage") 500 remaining
+                    .modal-footer
+                        button#sendMessageButton.btn.btn-default.btn-primary(type="submit")
+                            | Send

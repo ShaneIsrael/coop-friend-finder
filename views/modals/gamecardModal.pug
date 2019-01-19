@@ -1,0 +1,45 @@
+div(class="modal fade" role="dialog" id="gamecardModal")
+    div(class="modal-dialog")
+        div(class="modal-content")
+            div(class="modal-header")
+                button(type="button" class="close" data-dismiss="modal") &times;
+                h4(class="modal-title") Game Title
+            form(id="gamecardForm" role="form")
+                input(type='hidden', name='_csrf', value=_csrf)
+                div(class="modal-body")
+                    div(class="form-group")
+                        input(id="gameTitle" type="text" class="form-control hidden" name="game" value="" required autofocus)
+                        .input-group
+                            span.input-group-addon Platform
+                            select(id="platform" class="form-control" name="platform" required)
+                                option(value="Steam") Steam
+                                option(value="Origin") Origin
+                                option(value="Battle.net") Battle.net
+                                option(value="PC") Other PC
+                                option(value="Xbox One") Xbox One
+                                option(value="Xbox 360") Xbox 360
+                                option(value="Playstation 4") Playstation 4
+                                option(value="Playstation 3") Playstation 3
+                        .input-group
+                            span.input-group-addon Region
+                            select(id="region" class="form-control" name="region" required)
+                                option(value="n-america") North America
+                                option(value="s-america") South America
+                                option(value="europe") Europe
+                                option(value="aus") Australia
+                                option(value="japan-asia") Japan / Asia
+                                option(value="china") China
+                                option(value="africa") Africa
+                        .input-group
+                            span.input-group-addon In-game Name
+                            input(id="platformName" type="text" class="form-control" name="platformUsername" placeholder="Platform Username" required)
+                        .input-group
+                            span.input-group-addon Notes
+                            textarea(id="notesArea" class="form-control gamecardNotes" rows="4" name="notes" placeholder="Say something about yourself or what you want to accomplish ...")
+                        h6(class="pull-right gamecardNotesCountMessage") 500 remaining
+                        .checkbox
+                            label
+                                input(id="voip" type="checkbox" name="voip")
+                                b Require VoIP
+                div(class="modal-footer")
+                    button(type="submit" id="gamecardModalSubmit" class="btn btn-success btn-block modal-submit") Create Listing
